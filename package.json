@@ -1,0 +1,21 @@
+{
+  "name": "@bbtfe/procli",
+  "version": "0.0.21",
+  "description": "前端工程化命令工具，一键创建目录结构",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "bin": {
+    "procli": "cmd.js"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "yeoman-environment": "^2.6.0",
+    "yeoman-generator": "^4.2.0"
+  },
+  "dependencies": {
+    "commander": "^4.0.0"
+  }
+}
