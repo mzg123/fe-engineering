@@ -92,7 +92,7 @@ const webpackConfig = {
      publicPath: Config.publicPath,
      proxy: {
          "/activity_square": {
-          target: 'http://open-miaozhigao.babytree-dev.com',
+          target: 'http://open-miaozhigao.ba9bytree-dev.com',
           changeOrigin: true,
           secure: false
      },

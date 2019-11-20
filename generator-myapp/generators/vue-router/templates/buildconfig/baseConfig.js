@@ -43,11 +43,11 @@ const Config = {
     htmlDistPath: path.resolve(__dirname, '../static/'),
     //页面中使用的其他js链接
     commJs: [
-      //'<script src="//static02.babytreeimg.com/concat/??/img/js/myurchin.js"></script>',
-      //'<script src="//static02.babytreeimg.com/img/bca/tracking/0.1.16/tracking.min.js"></script>',
-      //'<script src="//static02.babytreeimg.com/img/bca/native/0.1.6/native.min.js"></script>',
+      //'<script src="//static02.ba9bytreeimg.com/concat/??/img/js/myurchin.js"></script>',
+      //'<script src="//static02.ba9bytreeimg.com/img/bca/tracking/0.1.16/tracking.min.js"></script>',
+      //'<script src="//static02.ba9bytreeimg.com/img/bca/native/0.1.6/native.min.js"></script>',
       //'<script src="//res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>',
-      //'<script src="http://static02.babytreeimg.com/concat/??/static/know/base64.js"></script>'
+      //'<script src="http://static02.ba9bytreeimg.com/concat/??/static/know/base64.js"></script>'
     ],
 }
 
