@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
+const fsExtra = require('fs-extra');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -85,32 +86,37 @@ const Helper = {
 
     setPluginsByEnv: function(webpackConfig) {
         if (Config.isBuild) {
-          webpackConfig.plugins.push(
-            new CleanWebpackPlugin(
-              [Config.staticDistPath, Config.jsWatchPath, Config.phpDistPath],　 
-              {
-                root: path.resolve(Config.feParentPath),    　　　　　　　　　　
-                verbose: false,    　　　　　　　　　　
-                dry:   false    　　　　　　　　　　
-              }
-            )
-          );
+          fsExtra.emptyDirSync(Config.staticDistPath);
+          fsExtra.emptyDirSync(Config.jsWatchPath);
+          fsExtra.emptyDirSync(Config.phpDistPath);
+          //webpackConfig.plugins.push(
+          //  new CleanWebpackPlugin(
+          //    [Config.staticDistPath, Config.jsWatchPath, Config.phpDistPath],　 
+          //    {
+          //      root: path.resolve(Config.feParentPath),    　　　　　　　　　　
+          //      verbose: false,    　　　　　　　　　　
+          //      dry:   false    　　　　　　　　　　
+          //    }
+          //  )
+          //);
           webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"}));
         } else if (Config.isStart) {
           webpackConfig.output.publicPath = `http://${Config.devServerHost}:${Config.devServerPort}/`;
           webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].css"}));
           webpackConfig.output.filename = '[name].js';
         } else if (Config.isWatch) {
-          webpackConfig.plugins.push(
-            new CleanWebpackPlugin(
-              [Config.jsWatchPath, Config.phpDistPath],　 
-              {
-                root: path.resolve(Config.feParentPath),    　　　　　　　　　　
-                verbose: false,    　　　　　　　　　　
-                dry:   false    　　　　　　　　　　
-              }
-            )
-          );
+          fsExtra.emptyDirSync(Config.jsWatchPath);
+          fsExtra.emptyDirSync(Config.phpDistPath);
+          //webpackConfig.plugins.push(
+          //  new CleanWebpackPlugin(
+          //    [Config.jsWatchPath, Config.phpDistPath],　 
+          //    {
+          //      root: path.resolve(Config.feParentPath),    　　　　　　　　　　
+          //      verbose: false,    　　　　　　　　　　
+          //      dry:   false    　　　　　　　　　　
+          //    }
+          //  )
+          //);
             webpackConfig.output.publicPath = webpackConfig.output.publicPath.replace('dist\/', 'watch\/');
             webpackConfig.output.path = webpackConfig.output.path.replace('dist', 'watch');
             webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].[contenthash:8].watch.css"}));

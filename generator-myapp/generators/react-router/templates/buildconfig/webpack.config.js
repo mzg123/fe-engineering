@@ -54,6 +54,7 @@ const webpackConfig = {
               cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
           })
       ],
+      moduleIds: 'hashed',
       splitChunks: { 
           chunks: 'all',
           // 大于30KB才单独分离成chunk 

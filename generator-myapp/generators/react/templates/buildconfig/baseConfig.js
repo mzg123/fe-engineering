@@ -8,7 +8,7 @@ const Config = {
     isBuild: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run build',
     isStart: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run start'
         || JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'start' ,
-    idWatch: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run watch',
+    isWatch: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run watch',
     isDev: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run server'
         || JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run buildDev',
     //devServer port
