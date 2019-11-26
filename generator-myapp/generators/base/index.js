@@ -18,9 +18,10 @@ module.exports = class extends Generator {
 
 
   writing() {
+      const proName = this.options['proName'] || 'app';
       this.fs.copyTpl(
       this.templatePath(),
-      this.destinationPath('react')
+      this.destinationPath(proName)
     );
   }
 };

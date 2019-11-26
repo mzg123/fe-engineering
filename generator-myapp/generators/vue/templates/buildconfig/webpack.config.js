@@ -144,6 +144,15 @@ const webpackConfig = {
         use: [
           MiniCssExtractPlugin.loader,
 		  "happypack/loader?id=css",
+          {
+              loader: "postcss-loader",
+              options: {
+                  plugins: [
+                      require("postcss-import"),
+                      require("autoprefixer"), /*在这里添加*/
+                  ],
+              },
+          },
         ]
       }, 
       {
@@ -195,7 +204,6 @@ const webpackConfig = {
       use: [
           "css-loader",
           "sass-loader",
-          "postcss-loader",
       ]
     }),
     new SizePlugin(),

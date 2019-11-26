@@ -3,6 +3,7 @@ const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
 const fsExtra = require('fs-extra');
+const exec = require('child_process').exec;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -34,6 +35,27 @@ function getEntries(globPath) {
   });
 
   return entries;
+}
+//删除 git rm
+async function gitRm(dirArr) {
+    for(let i = 0; i < dirArr.length; i++) {
+        const files = glob.sync(path.resolve(dir, './**/*.*'));
+        const promiseArr = [];
+        let filepath = files.shift();
+        while(filepath) {
+            await new Promise((resolve) => {
+                try {
+                    exec('git rm -f ' + filepath, (err) => {
+                        filepath = files.shift();
+                        resolve();
+                    });
+                } catch(e) {
+                    console.log(e);
+                    resolve();
+                }
+            });
+        }
+    }
 }
 const Helper = {
     //comp 复制到dist中
@@ -86,6 +108,7 @@ const Helper = {
 
     setPluginsByEnv: function(webpackConfig) {
         if (Config.isBuild) {
+          gitRm([Config.staticDistPath, Config.jsWatchPath, Config.phpDistPath]);
           fsExtra.emptyDirSync(Config.staticDistPath);
           fsExtra.emptyDirSync(Config.jsWatchPath);
           fsExtra.emptyDirSync(Config.phpDistPath);
@@ -105,6 +128,7 @@ const Helper = {
           webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].css"}));
           webpackConfig.output.filename = '[name].js';
         } else if (Config.isWatch) {
+          gitRm([Config.phpDistPath]);
           fsExtra.emptyDirSync(Config.jsWatchPath);
           fsExtra.emptyDirSync(Config.phpDistPath);
           //webpackConfig.plugins.push(
