@@ -13,7 +13,6 @@ module.exports = function(option, proName) {
   if (router) {
       template = template + '-router';
   }
-  console.log(template, 9999, proName);
   env.register(require.resolve('./generator-myapp/generators/' + template), template);
   env.run(template, {proName: proName});
   

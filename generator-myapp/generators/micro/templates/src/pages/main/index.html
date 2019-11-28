@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main</title>
+</head>
+<body>
+<script>
+  function goto(title, href) {
+    window.history.pushState({}, title, href);
+  }
+</script>
+    <div>Main Frame !!!</div>
+          <nav>
+          <ol>
+            <li><a onclick="goto('home', '/static/main')">home</a></li>
+            <li><a onclick="goto('react app', '/static/main/react')">react16 + antd3</a></li>
+            <li><a onclick="goto('react15 app', '/static/main/15react15')">react15 + antd2</a></li>
+            <li><a onclick="goto('vue app', '/static/main/vue')">vue2 + element2</a></li>
+          </ol>
+        </nav>
+    <div id="container" class="container">
+        Hello Word!
+    </div>
+</body>
+</html>
