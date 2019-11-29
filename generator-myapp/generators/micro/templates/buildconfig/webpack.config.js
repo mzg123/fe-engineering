@@ -156,7 +156,7 @@ const webpackConfig = {
             options:{
               cacheDirectory: true,
               plugins:['@babel/plugin-transform-runtime', ['@babel/plugin-proposal-decorators', { 'legacy': true }]],
-              presets: [['@babel/preset-env',{modules: false}]]
+              presets: [['@babel/preset-env',{modules: false}], '@babel/preset-react']
             },
         }
       ]

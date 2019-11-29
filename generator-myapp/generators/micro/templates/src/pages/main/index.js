@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import 'babel-polyfill';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import {
     start,
@@ -8,9 +10,11 @@ import {
     runAfterFirstMounted,
 } from 'qiankun';
 
-function render({ appContent }) {
+import Framework from './Framework';
+
+function render({ appContent, loading }) {
     const container = document.getElementById('container');
-    container.innerHTML = appContent;
+    ReactDOM.render((<Framework loading={loading} content={appContent} />), container);
 }
 
 function genActiveRule(routerPrefix) {
@@ -28,7 +32,7 @@ registerMicroApps(
     [
         {
             name: 'reactapp',
-            entry: '//localhost:8281/static/react',
+            entry: '//localhost:7100',
             render,
             activeRule: genActiveRule('/static/main/react'),
         },

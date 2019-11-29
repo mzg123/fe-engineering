@@ -5,6 +5,18 @@ const feParentPath = path.resolve(__dirname, '../../');
 const projectName = path.basename(path.resolve(__dirname, '../'));
 const serverPrePath = '';
 const Config = {
+    subapp: {
+        react: {
+            dist: path.resolve(__dirname, '../dist/subapp/react/'),
+            publicUrl: './',
+            global: 'reactapp',
+        },
+        vue: {
+            dist: path.resolve(__dirname, '../dist/subapp/vue/'),
+            publicUrl: './',
+            global: 'vueapp',
+        },
+    },
     isBuild: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run build',
     isStart: JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'run start'
         || JSON.parse(process.env.npm_config_argv).original.join(' ').trim() === 'start' ,
@@ -35,9 +47,11 @@ const Config = {
     //jsWatchPath: path.resolve(feParentPath, `./Static/fe/${projectName}/watch/`),
     jsWatchPath: path.resolve(__dirname, '../watch/'),
     //php页面生成后存放路径
-    phpDistPath: path.resolve(feParentPath, `./tmpl/fe/${projectName}/dist/pages/`),
+    //phpDistPath: path.resolve(feParentPath, `./tmpl/fe/${projectName}/dist/pages/`),
+    phpDistPath: path.resolve(__dirname, '../dist/'),
     //php通用模版存放路径
-    phpCommDistPath: path.resolve(feParentPath, `./tmpl/fe/${projectName}/dist/`), 
+    //phpCommDistPath: path.resolve(feParentPath, `./tmpl/fe/${projectName}/dist/`), 
+    phpCommDistPath: path.resolve(__dirname, '../dist/'),
     //html页面生成后存放路径
     //htmlDistPath: path.resolve(feParentPath, `./Static/fe/${projectName}/dist/pages/`),
     htmlDistPath: path.resolve(__dirname, '../static/'),
