@@ -23,7 +23,7 @@ const options = {
   minify: true, // 压缩文件，当 process.env.NODE_ENV === 'production' 时，会启用
   //scopeHoist: true, // 打开实验性的scope hoisting/tree shaking用来缩小生产环境的包。
   target: 'browser', // browser/node/electron, 默认为 browser
-  bundleNodeModules: false, // 当package.json的'target'设置'node' or 'electron'时，相应的依赖不会加入bundle中。设置true将被包含。
+  bundleNodeModules: true, // 当package.json的'target'设置'node' or 'electron'时，相应的依赖不会加入bundle中。设置true将被包含。
   //https: { // 设置true自动定义一对密钥和证书，false取消变成http
   //  cert: './ssl/c.crt', // 自定义证书路径
   //  key: './ssl/k.key' // 自定义密钥路径
@@ -36,11 +36,11 @@ const options = {
    * 2 = 输出警告和错误
    * 1 = 输出错误
   */
-  hmr: true, // 开启或禁止HRM
-  hmrPort: 0, // hmr socket 运行的端口，默认为随机空闲端口(在 Node.js 中，0 会被解析为随机空闲端口)
+  //hmr: true, // 开启或禁止HRM
+  //hmrPort: 0, // hmr socket 运行的端口，默认为随机空闲端口(在 Node.js 中，0 会被解析为随机空闲端口)
   sourceMaps: true, // 启用或禁用 sourcemaps，默认为启用(在精简版本中不支持)
-  hmrHostname: '', // 热模块重载的主机名，默认为 ''
-  detailedReport: false // 打印 bundles、资源、文件大小和使用时间的详细报告，默认为 false，只有在禁用监听状态时才打印报告
+  //hmrHostname: '', // 热模块重载的主机名，默认为 ''
+  //detailedReport: false // 打印 bundles、资源、文件大小和使用时间的详细报告，默认为 false，只有在禁用监听状态时才打印报告
 };
 
 (async function() {

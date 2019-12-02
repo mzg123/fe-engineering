@@ -32,13 +32,13 @@ registerMicroApps(
     [
         {
             name: 'reactapp',
-            entry: '//localhost:7100',
+            entry: '//localhost:8281/subapp/react',
             render,
             activeRule: genActiveRule('/static/main/react'),
         },
         {
             name: 'vueapp',
-            entry: '//localhost:8281/static/vue',
+            entry: '//localhost:8281/subapp/vue',
             render,
             activeRule: genActiveRule('/static/main/vue'),
         },

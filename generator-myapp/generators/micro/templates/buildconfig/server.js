@@ -11,6 +11,7 @@ const App = Express();
 const Compiler = Webpack(webpackConfig);
 
 App.use('/static', Express.static(Path.join(process.cwd(), 'static')))
+App.use('/subapp', Express.static(Path.join(process.cwd(), 'subdist')))
 .use(WebpackDevMiddleware(Compiler, {
     lazy: false,
     watchOptions: {

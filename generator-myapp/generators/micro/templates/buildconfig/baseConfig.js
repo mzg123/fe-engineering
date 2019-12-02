@@ -7,13 +7,13 @@ const serverPrePath = '';
 const Config = {
     subapp: {
         react: {
-            dist: path.resolve(__dirname, '../dist/subapp/react/'),
-            publicUrl: './',
+            dist: path.resolve(__dirname, '../subdist/react/'),
+            publicUrl: '/subapp/react/',
             global: 'reactapp',
         },
         vue: {
-            dist: path.resolve(__dirname, '../dist/subapp/vue/'),
-            publicUrl: './',
+            dist: path.resolve(__dirname, '../subdist/vue/'),
+            publicUrl: '/subapp/vue/',
             global: 'vueapp',
         },
     },
