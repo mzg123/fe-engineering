@@ -7,11 +7,15 @@ const serverPrePath = '';
 const Config = {
     subapp: {
         react: {
+            //dist: path.join(feParentPath, `../Static/fe/${projectName}/subdist/react/`),
+            //publicUrl: path.join(serverPrePath, `/Static/fe/${projectName}/subdist/react/`),
             dist: path.resolve(__dirname, '../subdist/react/'),
             publicUrl: '/subapp/react/',
             global: 'reactapp',
         },
         vue: {
+            //dist: path.join(feParentPath, `../Static/fe/${projectName}/subdist/vue/`),
+            //publicUrl: path.join(serverPrePath, `/Static/fe/${projectName}/subdist/vue/`),
             dist: path.resolve(__dirname, '../subdist/vue/'),
             publicUrl: '/subapp/vue/',
             global: 'vueapp',
