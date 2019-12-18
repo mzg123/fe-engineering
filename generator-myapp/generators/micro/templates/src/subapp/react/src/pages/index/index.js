@@ -9,16 +9,14 @@ import App from './App';
 import './index.scss';
 
 export async function bootstrap() {
-  console.log('react app bootstraped');
+    console.log('react app bootstraped');
 }
 
 export async function mount(props) {
-  console.log('props from main framework', props);
-  ReactDOM.render(<App/>, document.getElementById('reactRoot'));
+    console.log('props from main framework', props);
+    ReactDOM.render(<App />, document.getElementById('reactRoot'));
 }
 
 export async function unmount() {
-  ReactDOM.unmountComponentAtNode(document.getElementById('reactRoot'));
+    ReactDOM.unmountComponentAtNode(document.getElementById('reactRoot'));
 }
-
-
