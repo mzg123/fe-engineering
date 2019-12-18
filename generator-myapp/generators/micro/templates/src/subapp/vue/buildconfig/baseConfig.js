@@ -32,21 +32,23 @@ const Config = {
     serverPrePath: serverPrePath,
     //静态资源打包后存放目录
     staticDistPath: path.resolve(__dirname, `../../../../subdist/${projectName}`),
-    //staticDistPath: path.join(feParentPath, `/Static/fe/${projectName}/dist/`),
+    //staticDistPath: path.join(SuperConfig.feParentPath, `../Static/fe/${SuperConfig.projectName}/subdist/${projectName}`),
     //publicPath 静态资源请求路径
-    //publicPath: path.join(serverPrePath, `/Static/fe/${projectName}/dist/`),
-    publicPath: 'http://localhost:8281/subdist/vue/',
+    //publicPath: path.join(serverPrePath, `/Static/fe/${SuperConfig.projectName}/subdist/${projectName}/`),
+    publicPath: '//localhost:8281/subdist/vue/',//'../../',
     //watch 目录
-    //jsWatchPath: path.resolve(feParentPath, `./Static/fe/${projectName}/watch/`),
+    //jsWatchPath: path.resolve(feParentPath, `../Static/fe/${SuperConfig.projectName}/subwatch/`),
     jsWatchPath: path.resolve(__dirname, `../../../../subwatch/${projectName}`),
     //php页面生成后存放路径
-    phpDistPath: path.resolve(SuperConfig.feParentPath, `./tmpl/fe/${SuperConfig.projectName}/subdist/${projectName}/pages/`),
+    //phpDistPath: path.resolve(SuperConfig.feParentPath, `./tmpl/fe/${SuperConfig.projectName}/subdist/${projectName}/pages/`),
+    phpDistPath: path.resolve(SuperConfig.feParentPath, `../tmpl/fe/${SuperConfig.projectName}/subdist/${projectName}/pages/`),
     //php通用模版存放路径
-    phpCommDistPath: path.resolve(SuperConfig.feParentPath, `./tmpl/fe/${SuperConfig.projectName}/subdist/${projectName}/`), 
+    phpCommDistPath: path.resolve(SuperConfig.feParentPath, `../tmpl/fe/${SuperConfig.projectName}/subdist/${projectName}/`),
+    //phpCommDistPath: path.resolve(SuperConfig.feParentPath, `./tmpl/fe/${SuperConfig.projectName}/subdist/${projectName}/`), 
     //html页面生成后存放路径
     //htmlDistPath: path.resolve(feParentPath, `./Static/fe/${projectName}/dist/pages/`),
-    //htmlDistPath: path.resolve(__dirname, '../../../../sub/static/'),
-    htmlDistPath: path.resolve(__dirname, `../../../../subdist/${projectName}/pages/`),
+    //htmlDistPath: path.resolve(__dirname, `../../../../subdist/${projectName}/pages/`),
+    htmlDistPath: path.resolve(SuperConfig.feParentPath, `../Static/fe/${SuperConfig.projectName}/subdist/${projectName}/pages/`),
     //页面中使用的其他js链接
     commJs: [
       //'<script src="//static02.ba9bytreeimg.com/concat/??/img/js/myurchin.js"></script>',
