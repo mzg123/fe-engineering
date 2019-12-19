@@ -12,8 +12,8 @@ export default function Framework(props) {
                 <nav>
                     <ol>
                         <li><div onClick={() => goto('home', '/')}>home</div></li>
-                        <li><div onClick={() => goto('react app', '/static/main/react')}>react16 + antd3</div></li>
-                        <li><div onClick={() => goto('vue app', '/static/main/vue')}>vue2 + element2</div></li>
+                        <li><div onClick={() => goto('react app', '/open/user/react')}>react16 + antd3</div></li>
+                        <li><div onClick={() => goto('vue app', '/open/user/vue')}>vue2 + element2</div></li>
                     </ol>
                 </nav>
             </header>

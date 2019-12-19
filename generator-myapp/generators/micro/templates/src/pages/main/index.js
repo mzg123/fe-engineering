@@ -32,15 +32,17 @@ registerMicroApps(
     [
         {
             name: 'reactapp',
-            entry: '//localhost:8281/subdist/react/pages/index/',
+            //entry: '//localhost:8281/subdist/react/pages/index/',
+            entry: '//open.miaozhigao.babytree-dev.com/Static/fe/micro-new/subdist/react/pages/index/index.html',
             render,
-            activeRule: genActiveRule('/static/main/react'),
+            activeRule: genActiveRule('/open/user/react'),
         },
         {
             name: 'vueapp',
-            entry: '//localhost:8281/subdist/vue/pages/index/',
+            //entry: '//localhost:8281/subdist/vue/pages/index/',
+            entry: '//open.miaozhigao.babytree-dev.com/Static/fe/micro-new/subdist/vue/pages/index/index.html',
             render,
-            activeRule: genActiveRule('/static/main/vue'),
+            activeRule: genActiveRule('/open/user/vue'),
         },
     ],
     {
@@ -65,7 +67,8 @@ registerMicroApps(
     },
 );
 
-setDefaultMountApp('/static/main/react');
+//setDefaultMountApp('/static/main/react');
+setDefaultMountApp('/open/user/react');
 console.log(setDefaultMountApp);
 runAfterFirstMounted(() => console.info('first app mounted'));
 start({ prefetch: true, fetch: request });
