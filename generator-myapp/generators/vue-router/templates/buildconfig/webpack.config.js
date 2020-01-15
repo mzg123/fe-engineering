@@ -101,9 +101,27 @@ const webpackConfig = {
   },
   module:{
     rules:[
-      {
-          //test: /\.tsx?$/, loader: "ts-loader"
-      },
+      //{
+      //    test: /\.ts$/,
+      //    exclude: /node_modules/,
+      //    enforce: 'pre',
+      //    loader: 'tslint-loader',
+      //    options: {
+      //        fix: true,
+      //        failOnError: true,        
+      //        failOnWarning: false,
+      //        failOnHint: true,
+      //        configFile: path.resolve(__dirname, './tslint.json'), 
+      //    }
+      //},
+      //{
+      //    test: /\.tsx?$/,
+      //    loader: "ts-loader",
+      //    exclude: /node_modules/,
+      //    options: {
+      //        appendTsSuffixTo: [/\.vue$/],
+      //    },
+      //},
       {
         //test:/\.js?$/,
         test:/\.(js|jsx)$/,
