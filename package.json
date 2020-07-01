@@ -1,6 +1,6 @@
 {
   "name": "@bbtfe/procli",
-  "version": "0.0.48",
+  "version": "0.0.51",
   "description": "前端工程化命令工具，一键创建目录结构",
   "main": "index.js",
   "scripts": {

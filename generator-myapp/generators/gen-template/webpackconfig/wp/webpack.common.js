@@ -4,6 +4,8 @@ const path = require('path');
 const webpack = require('webpack');
 const Happypack = require("happypack");
 const SizePlugin = require('size-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+//const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const Dashboard = require('webpack-dashboard');
 const TerserPlugin = require('terser-webpack-plugin');
 const DashboardPlugin = require("webpack-dashboard/plugin");
@@ -11,6 +13,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+//const smp = new SpeedMeasurePlugin();
 
 const Config = require('./baseConfig');
 const Helper = require('./webpackHelper');
@@ -188,6 +192,7 @@ const webpackConfig = {
           "sass-loader",
       ]
     }),
+    new HardSourceWebpackPlugin(),
     new SizePlugin(),
     new CaseSensitivePathsPlugin({
         debug: false,
@@ -211,3 +216,4 @@ webpackConfig.plugins.push(new CustomPlugin({
   commJsTpl: Config.commJs, 
 }));
 module.exports = webpackConfig;
+//module.exports = smp.wrap(webpackConfig);
