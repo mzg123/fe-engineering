@@ -1,0 +1,15 @@
+main:after {
+  content: 'global react style';
+  .m {
+     color: red;
+     .z {
+         color: red;
+     }
+     .g{
+         color: red;
+     }
+  }
+}
+body {
+    background: url('../../imgs/noresult.png');
+}

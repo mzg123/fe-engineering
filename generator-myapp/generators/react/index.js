@@ -25,3 +25,14 @@ module.exports = class extends Generator {
     );
   }
 };
+
+class Template {
+    constructor() {
+    }
+
+    createTemplate() {
+        //复制相同配置
+        //处理不同配置
+
+    }
+}

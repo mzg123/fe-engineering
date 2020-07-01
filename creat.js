@@ -14,8 +14,10 @@ module.exports = function(option, proName) {
   if (router) {
       template = template + '-router';
   }
-  env.register(require.resolve('./generator-myapp/generators/' + template), template);
-  env.run(template, {proName: proName});
+  //env.register(require.resolve('./generator-myapp/generators/' + template), template);
+  //env.run(template, {proName: proName, template: template});
+  env.register(require.resolve('./generator-myapp/generators/gen-template'), 'gen-template');
+  env.run('gen-template', {proName: proName, template: template});
   
   //env.lookup(function() {
   //  env.run('mtext', {

@@ -1,0 +1,12 @@
+@import '../../comp/BaseCss/Base.css';
+body {
+    background: white;
+}
+* {
+    color: red;
+}
+
+
+[v-cloak]{
+    display: none;
+}
