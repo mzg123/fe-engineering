@@ -4,6 +4,7 @@ module.exports = function(option, proName) {
   if (template !== 'react' && template !== 'vue'
   && template !== 'base' && template !== 'preg'
   && template !== 'ts-vue-full'
+  && template !== 'ts-react'
   && template !== 'preg-react' && template !== 'micro') {
       console.log('please add a template eg: -t react ;support react base vue');
       return;

@@ -10,14 +10,9 @@ const MockApi = require('../mock/Api');
 const App = Express();
 const Compiler = Webpack(webpackConfig);
 
-const port = 8281;
-
-App.use('/', Express.static(Path.join(process.cwd(), 'static/Index')))
-//App.use('/static', Express.static(Path.join(process.cwd(), 'dist')))
-//App.use('/dist', Express.static(Path.join(process.cwd(), 'dist')))
+App.use('/static', Express.static(Path.join(process.cwd(), 'static')))
 .use(WebpackDevMiddleware(Compiler, {
     lazy: false,
-    publicPath: '/dist/',
     watchOptions: {
         aggregateTimeout: 300,
         ignored: /node_modules/,
@@ -29,11 +24,9 @@ App.use('/', Express.static(Path.join(process.cwd(), 'static/Index')))
 
 MockApi(App);
 
-App.listen(port, err => {
+App.listen(8281, err => {
     if (err) {
         throw new Error(err);
-    } else {
-	console.log('*********************http://127.0.0.1:', port, 'is listening*************************');
     }
 });
 

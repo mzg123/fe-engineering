@@ -19,16 +19,8 @@ function getEntries(globPath) {
     if (['.html', '.php'].indexOf(extname) > -1) {
         filepath = filepath.substring(filepath.lastIndexOf('src'));      
         const name = filepath.replace('src/', '').replace('pages/', '').replace('.js', '').replace(extname, '');
-        let jsP = Config.feParentPath + '/' + Config.projectName + '/' + filepath.replace(extname, '.jsx');
-        //如果有tsx 加载tsx
-        if (fs.existsSync(jsP.replace(path.extname(jsP), '.tsx'))) {
-            jsP = jsP.replace(path.extname(jsP), '.tsx');
-        }
-        //如果有ts 加载ts
-        if (fs.existsSync(jsP.replace(path.extname(jsP), '.ts'))) {
-            jsP = jsP.replace(path.extname(jsP), '.ts');
-        }
         //默认加载js
+        let jsP = Config.feParentPath + '/' + Config.projectName + '/' + filepath.replace(extname, '.jsx');
         if (fs.existsSync(jsP.replace(path.extname(jsP), '.js'))) {
             jsP = jsP.replace(path.extname(jsP), '.js');
         }
@@ -87,7 +79,7 @@ const Helper = {
           if (isExist) {
               const arr = [];
               if (Config.isDev) {
-                  arr.push('webpack-hot-middleware/client?path=/__webpack_hmr');
+                  arr.push('webpack-hot-middleware/client');
                   arr.push(indexHtmls[name].jsPath);
               } else {
                   arr.push(indexHtmls[name].jsPath);
@@ -110,6 +102,7 @@ const Helper = {
           });
           entryArr.push(plugin);
         });
+        //return entryArr
         webpackConfig.plugins = webpackConfig.plugins.concat(entryArr);
     },
 
@@ -119,17 +112,35 @@ const Helper = {
           fsExtra.emptyDirSync(Config.staticDistPath);
           fsExtra.emptyDirSync(Config.jsWatchPath);
           fsExtra.emptyDirSync(Config.phpDistPath);
+          //webpackConfig.plugins.push(
+          //  new CleanWebpackPlugin(
+          //    [Config.staticDistPath, Config.jsWatchPath, Config.phpDistPath],　 
+          //    {
+          //      root: path.resolve(Config.feParentPath),    　　　　　　　　　　
+          //      verbose: false,    　　　　　　　　　　
+          //      dry:   false    　　　　　　　　　　
+          //    }
+          //  )
+          //);
           webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"}));
         } else if (Config.isStart) {
           webpackConfig.output.publicPath = `http://${Config.devServerHost}:${Config.devServerPort}/`;
-          webpackConfig.devServer.publicPath = `http://${Config.devServerHost}:${Config.devServerPort}/`;
           webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].css"}));
           webpackConfig.output.filename = '[name].js';
-console.log(9098999997, webpackConfig.devServer.publicPath, webpackConfig.output.filename);
         } else if (Config.isWatch) {
           gitRm([Config.phpDistPath]);
           fsExtra.emptyDirSync(Config.jsWatchPath);
           fsExtra.emptyDirSync(Config.phpDistPath);
+          //webpackConfig.plugins.push(
+          //  new CleanWebpackPlugin(
+          //    [Config.jsWatchPath, Config.phpDistPath],　 
+          //    {
+          //      root: path.resolve(Config.feParentPath),    　　　　　　　　　　
+          //      verbose: false,    　　　　　　　　　　
+          //      dry:   false    　　　　　　　　　　
+          //    }
+          //  )
+          //);
             webpackConfig.output.publicPath = webpackConfig.output.publicPath.replace('dist\/', 'watch\/');
             webpackConfig.output.path = webpackConfig.output.path.replace('dist', 'watch');
             webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].[contenthash:8].watch.css"}));
@@ -139,8 +150,8 @@ console.log(9098999997, webpackConfig.devServer.publicPath, webpackConfig.output
             webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
             webpackConfig.output.filename = '[name].js';
             webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].css"}));
-        //} else {
-            //webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"}));
+        } else {
+            webpackConfig.plugins.push(new MiniCssExtractPlugin({filename: "[name].[contenthash:8].css"}));
         }
     }
 }
